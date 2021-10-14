@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% extends 'index.html' %}
+
+    {% block content %}
+
+    <h1> What fiber would you like to add your sequentials to? </h1>
+
+
+    {% for fiber in fiber_query %}
+
+        <a href="{% url 'create-seq' fiber.id %}">{{fiber.fib_title}}</a>
+    
+    {% endfor %}
+
+
+    <hr/>
+
+    {% for seq in seq_query %}
+    
+        <a href="{% url 'create-seq' seq.id %}">{{seq.fiber_relationship}}</a>
+
+    {% endfor %}
+
+    {% endblock %}
+    
+</body>
+</html>
