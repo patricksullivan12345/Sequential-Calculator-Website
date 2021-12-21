@@ -1,0 +1,21 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+
+<div class = "projects_container_parent">
+
+
+
+    <h1 class="projects_child">Username: {{user_data.username}}</h1>
+    <h1 class="projects_child">Name: {{user_data.name}}</h1>
+    <h1 class="projects_child">Email: {{user_data.email}}</h1>
+    <h1 class="projects_child"> Your bio: {{user_data.bio}}</h1>
+
+    <p><a class = "edit_link"  href="{% url 'edit_profile' %}">Edit Profile</a></p>
+
+    <p><a class = "delete_link" href="{% url 'delete_profile' %}">Delete Profile</a></p>
+
+</div>
+
+{% endblock %}

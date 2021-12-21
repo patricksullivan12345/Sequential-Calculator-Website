@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class= "form_container_parent">
+    <h1>Edit Profile:</h1>
+    <form method="POST">
+
+        {% csrf_token %}
+        {{form.user}}
+        <h2>Firstname:</h2>{{form.name}}
+        <h2>Email:</h2>{{form.email}} 
+        <h2>Username:</h2>{{form.username}}
+        <h2>Password:</h2>{{form.password1}}  
+        <h2>Renter Password:</h2>{{form.password2}} 
+        <h2>Profile Description:</h2>{{form.bio}}      
+
+        <br/> 
+
+        <input class="submit_button" type="submit"/>
+
+    </form>
+</div>
+
+
+{% endblock content %}
