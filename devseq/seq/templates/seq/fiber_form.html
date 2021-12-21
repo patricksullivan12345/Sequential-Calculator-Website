@@ -1,0 +1,25 @@
+
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="form_container_parent">
+
+    <h1> Add fiber to project: {{relationship}} </h1>
+
+    <p method="POST">
+
+        {% csrf_token %}
+
+        {{fiber_form.as_p}}   
+
+        <br/>
+
+        <input class= "submit_button" type="submit"/>
+        <p><a class= "submit_button" href="{% url 'projects' %}">Back to Projects</a></p>
+
+    </form>
+
+</div>
+
+{% endblock %}

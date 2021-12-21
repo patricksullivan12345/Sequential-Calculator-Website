@@ -1,0 +1,164 @@
+
+{% extends 'index.html'%}
+{% block content %}
+
+<div  class = "title_parent" >
+
+
+    <h1> {{projectObj.title}}</h1>
+    <p> {{projectObj.description}}</p>
+
+
+</div>
+
+<div class = "table_container">
+
+    <h2>Project Fiber:</h2>
+
+    <table>
+
+        <tr>
+
+            <th>Fiber Name</th>
+            <th>Fiber Count</th>
+            <th>Fiber Update</th>
+            <th>Fiber Delete</th>
+
+        </tr>
+
+        {% for fiber in fib_query %}
+
+            <tr>
+
+                <th>{{fiber.fib_title}}</th>
+                <th>{{fiber.fib_select}}</th>
+                <th><a class="edit_link" href="{% url 'update-fiber' fiber.id %}">Edit </a></th>
+                <th><a class="delete_link" href="{% url 'delete-fiber' fiber.id %}">Delete </a></th>
+                    
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <a class="submit_button" href="{% url 'create-fiber' projectObj.id %}">Create fiber</a>
+
+</div>
+
+
+<div class = "table_container">
+
+    <h2> Sequentials: </h2>
+
+    <table>
+
+        <tr>
+
+            <th>Fiber Name</th>
+            <th>In</th>
+            <th>Out</th>
+            <th>Structure Slack</th>
+            <th>Wall to Wall</th>
+            <th>Update</th>
+            <th>Delete</th>
+    
+        </tr>
+
+
+        <tr>
+
+            <th>
+
+                {% for seq in seq_query %}
+
+                    <p>{{seq.fiber_relationship}}</p>
+
+                {% endfor %}
+
+            </th>
+
+            <th>
+
+                {% for calc in calcs.in %}
+
+                    <p>{{calc}}</p>
+
+                {% endfor %}
+
+            </th>
+
+            <th>
+
+                {% for calc in calcs.out %}
+
+                    <p>{{calc}}</p>
+
+                {% endfor %}
+
+            </th>
+
+            
+            <th>
+
+                {% for calc in calcs.slack %}
+
+                    {% for slack in calc %}
+
+                        <p>{{slack}}</p>
+
+                    {% endfor %}
+
+                {% endfor %}
+
+            </th>
+
+            <th>
+
+                {% for calc in calcs.w2w %}
+
+                    {% for w2w in calc %}
+
+                        <p>{{w2w}}</p>
+
+                    {% endfor %}
+
+                {% endfor %}
+
+            </th>
+
+            <th>
+
+                {% for seq in seq_query %}
+
+                    <p><a class="edit_link" href="{% url 'update-seq'  seq.id %}">Edit</a></p>
+
+                {% endfor %}
+            
+            </th>
+
+            <th>
+                
+                {% for seq in seq_query %}
+
+                    <p><a class="delete_link" href="{% url 'delete-seq' seq.id %}">Delete</a></p>
+
+                {% endfor %}
+            
+            </th>
+
+        </tr>
+
+    </table>
+        
+
+<a class="submit_button" href="{% url 'seq-redirect' projectObj.id %}">Create seqentials</a>
+
+{% for measured_length in measured_list %}
+
+    <p>{{measured_length}}</p>
+
+{% endfor %}
+
+</div>
+
+{% endblock content %}
