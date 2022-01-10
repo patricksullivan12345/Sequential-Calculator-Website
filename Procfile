@@ -1,0 +1,1 @@
+web: gunicorn devseq.wsgi --log-file -

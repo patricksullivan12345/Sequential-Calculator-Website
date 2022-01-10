@@ -1,0 +1,38 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+    <div class = "projects_container_parent">
+
+        <h1> {{ user.username }} Projects: </h1>
+
+        {% for project in pages %}
+            
+            <h2 class="projects_child view_link"><a href="{% url 'project' project.id %}">{{project.title}}</a></h2>
+            <p  class="projects_child">{{project.description}}</p>
+            <p  class="projects_child">
+                <a class="marg edit_link" href="{% url 'update-project' project.id %}">Edit </a> 
+                <a class="marg delete_link" href="{% url 'delete-project' project.id %}">Delete </a> 
+            </p>
+                    
+        {% endfor %}
+
+        <div>
+            <h4>Project Pages:</h4>
+            {% for page in paginator.page_range %}
+                <ul class="pagination"><a href="?page={{page}}">{{page}}</a></ul>
+            {% endfor %}
+        
+        </div>
+ 
+    </div>
+
+{% else %}
+
+    <h1> You are not logged in! </h1>
+
+{% endif %}
+
+{% endblock content %}

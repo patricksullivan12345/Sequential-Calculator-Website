@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="login_parent">
+
+    <h1>Login:</h1>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input class="login_child" type="text" name="username" placeholder="Username" /> 
+        <input class="login_child" type="password" name="password" placeholder="Enter Password"/> 
+        <input class="submit_button" type="submit" value="Submit" /> 
+    </form>
+
+</div>
+
+
+{% endblock content %}

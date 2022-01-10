@@ -1,0 +1,19 @@
+{% load static %}
+
+{% include 'navbar.html'%}
+
+{% block content %}
+
+
+<div class="landing_image">
+    <div class="landing_div">
+
+        <h1 class = "landing_text">Calculate slack like a pro!</h1>
+        <h3 class = "landing_text">Join thousands of engineers on their quest never miscalculate fiber distances again!</h3>
+        <a class="link_button" href="{% url 'register' %}">Sign Up Today!</a>
+
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="form_container_parent">
+
+
+    <h1> Project Form </h1>
+
+
+        <form class= "form_dimensions" method="POST">
+
+            {% csrf_token %}
+
+            {{form}}   
+
+            <br/>
+
+            <input class= "submit_button" type="submit"/>
+
+        </form>
+
+</div>
+
+{% endblock %}
+    
